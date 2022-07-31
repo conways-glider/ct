@@ -23,8 +23,8 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
   -f, --force                       Force overwrite of output file
   -h, --help                        help for ct
       --indent                      Indent output (JSON & TOML only)
-  -i, --input string                Input file or extension (e.g. example.toml or toml) (accepted extensions: toml, yaml, json)
-  -o, --output string               Output file or extension  (e.g. example.json or json) (accepted extensions: toml, yaml, json)
+  -i, --input string                Input file or extension (e.g. example.toml or toml) (accepted extensions: toml, yaml, json, hcl)
+  -o, --output string               Output file or extension  (e.g. example.json or json) (accepted extensions: toml, yaml, json, hcl)
   -p, --output-permissions uint32   File permissions for output file (default 644)
   -v, --version                     version for ct
 ```
