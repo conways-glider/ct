@@ -1,7 +1,8 @@
+OS ?=
 CGO_ENABLED ?=
 GOOS ?=
 GOARCH ?=
-VERSION ?= 0.0.0
+RELEASE_VERSION ?= 0.0.0
 
 build:
 	go clean
@@ -11,9 +12,11 @@ build:
 build-release:
 	go clean
 	mkdir -p bin
-	mkdir -p build
-	CGO_ENABLED=${CGO_ENABLED} GOOS=${GOOS} GOARCH=${GOARCH} go build -o ./bin/ct
-	zip -r -j build/ct_${VERSION}_${GOOS}_${GOARCH}.zip ./bin
+	mkdir -p dist
+	CGO_ENABLED=${CGO_ENABLED} GOOS=${GOOS} GOARCH=${GOARCH} go build -ldflags "-s -w -X main.Version=${RELEASE_VERSION}" -o ./bin/ct
+
+strip:
+	strip ./bin/ct
 
 generate-test-files:
 	./scripts/generate_test_files.sh

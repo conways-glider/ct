@@ -18,12 +18,24 @@ var rootConfig *config.Config = &config.Config{}
 var rootCmd = &cobra.Command{
 	Use:   "ct",
 	Short: "Config Transformer",
-	RunE:  runRoot,
+	Long: `Config Tranfromer is a tool for converting config files.
+
+The Input and Output flags take either a file or extension.
+
+If input is a file, the file will be read, inferring the type from the file extension.
+If input is a type (e.g. toml, yaml, or json), it will be read from stdin.
+
+If output is a file, the file will be written, inferring the type from the file extension.
+If output is a type (e.g. toml, yaml, or json), it will be written to stdout.
+
+It supports the following formats: TOML, YAML, and JSON.`,
+	RunE: runRoot,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
-func Execute() {
+func Execute(version string) {
+	rootCmd.Version = version
 	err := rootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
@@ -31,12 +43,12 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().StringVarP(&rootConfig.Input, "input", "i", "", "Help message for toggle")
-	rootCmd.Flags().StringVarP(&rootConfig.Output, "output", "o", "", "Help message for toggle")
-	rootCmd.Flags().BoolVarP(&rootConfig.Force, "force", "f", false, "Help message for toggle")
-	rootCmd.Flags().BoolVar(&rootConfig.Indent, "indent", false, "Help message for toggle")
-	rootCmd.Flags().BoolVarP(&rootConfig.EscapeHTML, "escape-html", "e", false, "Help message for toggle")
-	rootCmd.Flags().Uint32VarP(&rootConfig.OutputPermission, "output-permissions", "p", 0644, "Help message for toggle")
+	rootCmd.Flags().StringVarP(&rootConfig.Input, "input", "i", "", "Input file or extension (e.g. example.toml or toml) (accepted extensions: toml, yaml, json)")
+	rootCmd.Flags().StringVarP(&rootConfig.Output, "output", "o", "", "Output file or extension  (e.g. example.json or json) (accepted extensions: toml, yaml, json)")
+	rootCmd.Flags().BoolVarP(&rootConfig.Force, "force", "f", false, "Force overwrite of output file")
+	rootCmd.Flags().BoolVar(&rootConfig.Indent, "indent", false, "Indent output (JSON & TOML only)")
+	rootCmd.Flags().BoolVarP(&rootConfig.EscapeHTML, "escape-html", "e", false, "Escapes HTML (JSON only)")
+	rootCmd.Flags().Uint32VarP(&rootConfig.OutputPermission, "output-permissions", "p", 644, "File permissions for output file")
 	err := rootCmd.MarkFlagRequired("input")
 	if err != nil {
 		panic(err)
