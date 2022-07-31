@@ -18,17 +18,17 @@ var rootConfig *config.Config = &config.Config{}
 var rootCmd = &cobra.Command{
 	Use:   "ct",
 	Short: "Config Transformer",
-	Long: `Config Tranfromer (ct) is a tool to convert between YAML, TOML, and JSON
+	Long: `Config Tranfromer (ct) is a tool to convert between YAML, TOML, JSON, and HCL
 
 The Input and Output flags take either a file or extension.
 
 If input is a file, the file will be read, inferring the type from the file extension.
-If input is a type (e.g. toml, yaml, or json), it will be read from stdin.
+If input is a type (e.g. toml, yaml, json, or hcl), it will be read from stdin.
 
 If output is a file, the file will be written, inferring the type from the file extension.
-If output is a type (e.g. toml, yaml, or json), it will be written to stdout.
+If output is a type (e.g. toml, yaml, json, or hcl), it will be written to stdout.
 
-It supports the following formats: TOML, YAML, and JSON.`,
+It supports the following formats: TOML, YAML, JSON, and HCL.`,
 	RunE: runRoot,
 }
 
@@ -43,8 +43,8 @@ func Execute(version string) {
 }
 
 func init() {
-	rootCmd.Flags().StringVarP(&rootConfig.Input, "input", "i", "", "Input file or extension (e.g. example.toml or toml) (accepted extensions: toml, yaml, json)")
-	rootCmd.Flags().StringVarP(&rootConfig.Output, "output", "o", "", "Output file or extension  (e.g. example.json or json) (accepted extensions: toml, yaml, json)")
+	rootCmd.Flags().StringVarP(&rootConfig.Input, "input", "i", "", "Input file or extension (e.g. example.toml or toml) (accepted extensions: toml, yaml, json, hcl)")
+	rootCmd.Flags().StringVarP(&rootConfig.Output, "output", "o", "", "Output file or extension  (e.g. example.json or json) (accepted extensions: toml, yaml, json, hcl)")
 	rootCmd.Flags().BoolVarP(&rootConfig.Force, "force", "f", false, "Force overwrite of output file")
 	rootCmd.Flags().BoolVar(&rootConfig.Indent, "indent", false, "Indent output (JSON & TOML only)")
 	rootCmd.Flags().BoolVarP(&rootConfig.EscapeHTML, "escape-html", "e", false, "Escapes HTML (JSON only)")

@@ -5,6 +5,7 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 - JSON
 - YAML
 - TOML
+- HCL (v1)
 
 ## Quick Links
 
@@ -29,6 +30,7 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 ```
 
 ### Examples
+
 | Input              | Output               | Command                                         |
 |--------------------|----------------------|-------------------------------------------------|
 | Pipe (toml format) | Stdout (json format) | `cat example.toml \| ct -i toml -o json`        |

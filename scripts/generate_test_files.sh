@@ -21,3 +21,5 @@ echo "$TOML" | ./bin/ct -i toml -o test_resources/files/json_indent.json --inden
 
 echo "$TOML" | ./bin/ct -i toml -o test_resources/files/yaml.yaml
 echo "$TOML" | ./bin/ct -i toml -o test_resources/files/yml.yml
+
+echo "$TOML" | ./bin/ct -i toml -o test_resources/files/hcl.hcl

@@ -10,7 +10,8 @@ import (
 
 func Output(rootConfig *config.Config, output []byte) error {
 	if rootConfig.OutputIsFile {
-		err := os.WriteFile(rootConfig.Output, output, fs.FileMode(rootConfig.OutputPermission))
+		filemode := fs.FileMode(rootConfig.ParsedOutputPermission)
+		err := os.WriteFile(rootConfig.Output, output, filemode)
 		if err != nil {
 			return fmt.Errorf("error writing output file: %w", err)
 		}
