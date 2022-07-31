@@ -15,7 +15,26 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 
 ## Usage
 
-TODO
+### Flags
+
+```
+  -e, --escape-html                 Escapes HTML (JSON only)
+  -f, --force                       Force overwrite of output file
+  -h, --help                        help for ct
+      --indent                      Indent output (JSON & TOML only)
+  -i, --input string                Input file or extension (e.g. example.toml or toml) (accepted extensions: toml, yaml, json)
+  -o, --output string               Output file or extension  (e.g. example.json or json) (accepted extensions: toml, yaml, json)
+  -p, --output-permissions uint32   File permissions for output file (default 644)
+  -v, --version                     version for ct
+```
+
+### Examples
+| Input              | Output               | Command                                         |
+|--------------------|----------------------|-------------------------------------------------|
+| Pipe (toml format) | Stdout (json format) | `cat example.toml \| ct -i toml -o json`        |
+| File (json format) | Stdout (yaml format) | `ct -i example.json -o yaml`                    |
+| Pipe (yaml format) | File (toml format)   | `cat example.yml \| ct -i yaml -o example.toml` |
+| File (toml format) | File (json format)   | `ct -i example.toml -o example.json`            |
 
 ## Installation
 
