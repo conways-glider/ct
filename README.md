@@ -33,10 +33,10 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 
 | Input              | Output               | Command                                         |
 |--------------------|----------------------|-------------------------------------------------|
-| Pipe (toml format) | Stdout (json format) | `cat example.toml \| ct -i toml -o json`        |
+| Pipe (toml format) | Stdout (hcl format)  | `cat example.toml \| ct -i toml -o hcl`        |
 | File (json format) | Stdout (yaml format) | `ct -i example.json -o yaml`                    |
 | Pipe (yaml format) | File (toml format)   | `cat example.yml \| ct -i yaml -o example.toml` |
-| File (toml format) | File (json format)   | `ct -i example.toml -o example.json`            |
+| File (hcl format)  | File (json format)   | `ct -i example.hcl -o example.json`            |
 
 ## Installation
 
