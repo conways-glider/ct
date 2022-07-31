@@ -59,9 +59,9 @@ jobs:
           go-version: '^1.18'
       - name: Test
         run: make test
-      - name: Set RELEASE_VERSION
+      - name: Set VERSION
         shell: bash
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: Set CGO_ENABLED=0 if needed
         if: ${{ matrix.disable_cgo }}
         shell: bash
@@ -70,17 +70,19 @@ jobs:
         env:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
-        run: make build-release
+        run: make release
       - name: Package
         shell: bash
         run: |
-          name="ct_${{ env.RELEASE_VERSION }}_${{ matrix.goos }}_${{ matrix.goarch }}"
+          name="ct_${{ env.VERSION }}_${{ matrix.goos }}_${{ matrix.goarch }}"
+          mkdir -p "$name"
+          cp {README.md,LICENSE-APACHE,LICENSE-MIT} "$name/"
+          cp ./bin/. "$name/"
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            mv ./bin/ct ./bin/ct.exe
-            7z a "${name}.zip" "./bin/*"
+            7z a "${name}.zip" "${name}"
             echo "ASSET=${name}.zip" >> $GITHUB_ENV
           else
-            tar -C "./bin" -czf "${name}.tar.gz" "./ct"
+            tar -czf "${name}.tar.gz" "./${name}"
             echo "ASSET=${name}.tar.gz" >> $GITHUB_ENV
           fi
       - name: Release
