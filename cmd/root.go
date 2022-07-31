@@ -18,7 +18,7 @@ var rootConfig *config.Config = &config.Config{}
 var rootCmd = &cobra.Command{
 	Use:   "ct",
 	Short: "Config Transformer",
-	Long: `Config Tranfromer is a tool for converting config files.
+	Long: `Config Tranfromer (ct) is a tool for converting config files.
 
 The Input and Output flags take either a file or extension.
 
