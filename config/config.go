@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/conways-glider/ct/slices"
@@ -23,21 +24,23 @@ type Config struct {
 	OutputPermission uint32
 
 	// Internal values
-	InputIsFile     bool
-	OutputIsFile    bool
-	InputExtension  string
-	OutputExtension string
-	InputReader     io.Reader
+	InputIsFile            bool
+	OutputIsFile           bool
+	InputExtension         string
+	OutputExtension        string
+	InputReader            io.Reader
+	ParsedOutputPermission uint32
 }
 
-const fileRegex = `(?i)^.+\.(json|toml|yaml|yml)$`
+const fileRegex = `(?i)^.+\.(json|toml|yaml|yml|hcl)$`
 
 const JSON = "json"
 const TOML = "toml"
 const YAML = "yaml"
 const YML = "yml"
+const HCL = "hcl"
 
-var validExtensions = []string{JSON, TOML, YAML, YML}
+var validExtensions = []string{JSON, TOML, YAML, YML, HCL}
 
 // Validate checks to see if the config is valid after flags are loaded and returns an error if not
 func (config *Config) Validate() error {
@@ -103,6 +106,15 @@ func (config *Config) Validate() error {
 			returnedError = appendError(returnedError, errorString)
 		}
 	}
+
+	// Handle weird octal conversion
+	value, err := strconv.ParseInt(fmt.Sprint(config.OutputPermission), 8, 32)
+	if err != nil {
+		errorString := fmt.Sprintf("could not parse output-permissions: %d", config.OutputPermission)
+		returnedError = appendError(returnedError, errorString)
+	}
+	config.ParsedOutputPermission = uint32(value)
+
 	if returnedError != nil {
 		return returnedError
 	}

@@ -2,6 +2,7 @@ package convert
 
 import (
 	"github.com/conways-glider/ct/config"
+	"github.com/conways-glider/ct/hcl"
 	"github.com/conways-glider/ct/json"
 	"github.com/conways-glider/ct/toml"
 	"github.com/conways-glider/ct/yaml"
@@ -18,6 +19,8 @@ func Convert(rootConfig *config.Config) ([]byte, error) {
 		decoded, err = toml.Decode(rootConfig)
 	case config.YAML:
 		decoded, err = yaml.Decode(rootConfig)
+	case config.HCL:
+		decoded, err = hcl.Decode(rootConfig)
 	}
 
 	if err != nil {
@@ -32,6 +35,8 @@ func Convert(rootConfig *config.Config) ([]byte, error) {
 		encoded, err = toml.Encode(rootConfig, decoded)
 	case config.YAML:
 		encoded, err = yaml.Encode(rootConfig, decoded)
+	case config.HCL:
+		encoded, err = hcl.Encode(rootConfig, decoded)
 	}
 
 	if err != nil {

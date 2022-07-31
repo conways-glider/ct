@@ -96,6 +96,22 @@ func TestConvert(t *testing.T) {
 			wantFile: "../test_resources/files/toml.toml",
 			wantErr:  false,
 		},
+		{
+			name: "toml to hcl",
+			args: args{
+				rootConfig: getTestConfig("../test_resources/files/toml.toml", "hcl", false),
+			},
+			wantFile: "../test_resources/files/hcl.hcl",
+			wantErr:  false,
+		},
+		{
+			name: "hcl to yaml",
+			args: args{
+				rootConfig: getTestConfig("../test_resources/files/yaml.yaml", "yaml", false),
+			},
+			wantFile: "../test_resources/files/yaml.yaml",
+			wantErr:  false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
