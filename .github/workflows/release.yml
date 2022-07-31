@@ -77,7 +77,7 @@ jobs:
           name="ct_${{ env.VERSION }}_${{ matrix.goos }}_${{ matrix.goarch }}"
           mkdir -p "$name"
           cp {README.md,LICENSE-APACHE,LICENSE-MIT} "$name/"
-          cp ./bin/. "$name/"
+          cp -a ./bin/. "$name/"
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
             7z a "${name}.zip" "${name}"
             echo "ASSET=${name}.zip" >> $GITHUB_ENV
