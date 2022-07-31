@@ -2,18 +2,21 @@ OS ?=
 CGO_ENABLED ?=
 GOOS ?=
 GOARCH ?=
-RELEASE_VERSION ?= 0.0.0
+VERSION ?= 0.0.0
 
 build:
 	go clean
 	mkdir -p bin
-	go build -o ./bin/ct
+	go build -o ./bin/
 
-build-release:
+release:
 	go clean
 	mkdir -p bin
-	mkdir -p dist
-	CGO_ENABLED=${CGO_ENABLED} GOOS=${GOOS} GOARCH=${GOARCH} go build -ldflags "-s -w -X main.Version=${RELEASE_VERSION}" -o ./bin/ct
+	CGO_ENABLED=${CGO_ENABLED} GOOS=${GOOS} GOARCH=${GOARCH} go build -ldflags "-s -w -X main.Version=${VERSION}" -o ./bin/
+
+clean:
+	go clean
+	rm -rf bin
 
 strip:
 	strip ./bin/ct
@@ -24,11 +27,16 @@ generate-test-files:
 test:
 	go test ./... -v
 
+cover:
+	go test -covermode=count -coverprofile=count.out ./...
+
 mod-tidy-check:
 	go mod tidy
 	git diff --exit-code
 
-lint:
+lint: lint-go shellcheck
+
+lint-go:
 	go clean
 	golangci-lint run ./...
 

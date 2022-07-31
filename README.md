@@ -45,9 +45,9 @@ brew tap conways-glider/tap
 brew install ct
 ```
 
-### Direct
+### Manual
 
-TODO
+Binaries for macOS, Linux, and Windows are [attached to each release](https://github.com/conways-glider/ct/releases).
 
 ### Building
 
