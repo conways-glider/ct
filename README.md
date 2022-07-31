@@ -38,7 +38,28 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 
 ## Installation
 
+### Homebrew
+
+```
+brew tap conways-glider/tap
+brew install ct
+```
+
+### Direct
+
 TODO
+
+### Building
+
+To build from source:
+
+```
+$ git clone https://github.com/conways-glider/ct
+$ cd ct
+$ make build
+$ ./bin/ct --version
+0.0.0
+```
 
 ## License
 
