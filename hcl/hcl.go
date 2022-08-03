@@ -38,7 +38,7 @@ func Decode(config *config.Config) (interface{}, error) {
 	if err != nil {
 		return nil, fmt.Errorf("could not read input stream: %w", err)
 	}
-	// f, err := hcl.ParseBytes(in)
+
 	err = hcl.Decode(&out, string(in))
 	if err != nil {
 		return nil, fmt.Errorf("could not decode hcl: %w", err)
