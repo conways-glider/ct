@@ -1,0 +1,14 @@
+linters:
+  enable:
+    - asciicheck
+    - gocritic
+    - goconst
+    - goimports
+    - gofmt
+    - gosec
+    - misspell
+    - unconvert
+    - whitespace
+    - promlinter
+    - revive
+    - staticcheck
