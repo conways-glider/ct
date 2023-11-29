@@ -8,10 +8,9 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
-
-	"github.com/conways-glider/ct/slices"
 )
 
 type Config struct {
