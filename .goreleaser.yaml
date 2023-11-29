@@ -46,7 +46,7 @@ changelog:
 brews:
   - name: ct
     homepage: "https://github.com/conways-glider/ct"
-    description: "A lightweight, fast, and simple config file transformer"
+    description: "Config file format transformer"
     repository:
       owner: conways-glider
       name: homebrew-tap
