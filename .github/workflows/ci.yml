@@ -45,6 +45,11 @@ jobs:
           go-version: '^1.21'
       - name: Lint Go
         uses: golangci/golangci-lint-action@v3
+        with:
+          # caching issues, see: https://github.com/golangci/golangci-lint-action/issues/244#issuecomment-1052190775
+          args: --timeout=10m
+          skip-pkg-cache: true
+          skip-build-cache: true
   mod-tidy-check:
     runs-on: ubuntu-latest
     steps:
