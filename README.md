@@ -40,13 +40,6 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 
 ## Installation
 
-### Homebrew
-
-```
-brew tap conways-glider/tap
-brew install ct
-```
-
 ### Manual
 
 Binaries for macOS, Linux, and Windows are [attached to each release](https://github.com/conways-glider/ct/releases).
