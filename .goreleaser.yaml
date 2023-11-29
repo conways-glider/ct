@@ -45,10 +45,9 @@ changelog:
 
 brews:
   - name: ct
+    homepage: "https://github.com/conways-glider/ct"
+    description: "A lightweight, fast, and simple config file transformer"
     repository:
       owner: conways-glider
       name: homebrew-tap
-      branch: "{{.ProjectName}}-{{.Version}}"
-      pull_request:
-        enabled: true
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
