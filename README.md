@@ -18,7 +18,7 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 
 ### Flags
 
-```
+```text
   -e, --escape-html                 Escapes HTML (JSON only)
   -f, --force                       Force overwrite of output file
   -h, --help                        help for ct
@@ -44,13 +44,13 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 
 You can install directly with:
 
-```
+```bash
 brew install conways-glider/tap/ct
 ```
 
 Or, you can tap and install with:
 
-```
+```bash
 brew tap conways-glider/tap
 brew install ct
 ```
@@ -63,7 +63,7 @@ Binaries for macOS, Linux, and Windows are [attached to each release](https://gi
 
 To build from source:
 
-```
+```bash
 $ git clone https://github.com/conways-glider/ct
 $ cd ct
 $ make build
@@ -75,10 +75,8 @@ $ ./bin/ct --version
 
 Licensed under either of
 
- * Apache License, Version 2.0
-   ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
- * MIT license
-   ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+- MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
 
 at your option.
 
