@@ -147,7 +147,7 @@ func getExtension(fileName string) string {
 
 func appendError(err error, errorString string) error {
 	if err == nil {
-		return fmt.Errorf(errorString)
+		return fmt.Errorf("%s", errorString)
 	}
 	return fmt.Errorf("%w; %s", err, errorString)
 }
