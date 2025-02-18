@@ -17,7 +17,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: '^1.21'
+          go-version: '^1.24'
       - name: Test
         env:
           GOOS: ${{ matrix.goos }}
@@ -31,7 +31,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: '^1.21'
+          go-version: '^1.24'
       - name: Race Condition
         run: make race-condition
   lint-go:
@@ -42,7 +42,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: '^1.21'
+          go-version: '^1.24'
       - name: Lint Go
         uses: golangci/golangci-lint-action@v3
         with:
@@ -58,7 +58,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: '^1.21'
+          go-version: '^1.24'
       - name: Mod Tidy Check
         run: make mod-tidy-check
   # Add a job for shellcheck
