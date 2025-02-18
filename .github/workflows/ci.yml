@@ -15,9 +15,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
-          go-version: '^1.21'
+          go-version: '^1.24'
       - name: Test
         env:
           GOOS: ${{ matrix.goos }}
@@ -29,9 +29,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
-          go-version: '^1.21'
+          go-version: '^1.24'
       - name: Race Condition
         run: make race-condition
   lint-go:
@@ -40,25 +40,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
-          go-version: '^1.21'
+          go-version: '^1.24'
       - name: Lint Go
-        uses: golangci/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v6
         with:
-          # caching issues, see: https://github.com/golangci/golangci-lint-action/issues/244#issuecomment-1052190775
-          args: --timeout=10m
-          skip-pkg-cache: true
-          skip-build-cache: true
+          version: v1.64
   mod-tidy-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
-          go-version: '^1.21'
+          go-version: '^1.24'
       - name: Mod Tidy Check
         run: make mod-tidy-check
   # Add a job for shellcheck

@@ -107,7 +107,7 @@ func (config *Config) Validate() error {
 	}
 
 	// Handle weird octal conversion
-	value, err := strconv.ParseInt(fmt.Sprint(config.OutputPermission), 8, 32)
+	value, err := strconv.ParseUint(fmt.Sprint(config.OutputPermission), 8, 32)
 	if err != nil {
 		errorString := fmt.Sprintf("could not parse output-permissions: %d", config.OutputPermission)
 		returnedError = appendError(returnedError, errorString)
@@ -147,7 +147,7 @@ func getExtension(fileName string) string {
 
 func appendError(err error, errorString string) error {
 	if err == nil {
-		return fmt.Errorf(errorString)
+		return fmt.Errorf("%s", errorString)
 	}
 	return fmt.Errorf("%w; %s", err, errorString)
 }
