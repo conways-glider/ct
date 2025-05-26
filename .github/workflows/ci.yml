@@ -44,9 +44,9 @@ jobs:
         with:
           go-version: '^1.24'
       - name: Lint Go
-        uses: golangci/golangci-lint-action@v6
+        uses: golangci/golangci-lint-action@v8
         with:
-          version: v1.64
+          version: v2.1
   mod-tidy-check:
     runs-on: ubuntu-latest
     steps:
