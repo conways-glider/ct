@@ -1,14 +1,17 @@
+version: "2"
 linters:
+  default: standard
   enable:
     - asciicheck
-    - gocritic
     - goconst
-    - goimports
-    - gofmt
+    - gocritic
     - gosec
     - misspell
     - unconvert
     - whitespace
-    - promlinter
-    - revive
-    - staticcheck
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports

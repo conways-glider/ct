@@ -26,8 +26,16 @@ func Encode(config *config.Config, in interface{}) ([]byte, error) {
 
 	out := bytes.Buffer{}
 	writer := bufio.NewWriter(&out)
-	printer.Fprint(writer, ast)
-	writer.Flush()
+	err = printer.Fprint(writer, ast)
+	if err != nil {
+		return nil, fmt.Errorf("could not print hcl: %w", err)
+	}
+
+	err = writer.Flush()
+	if err != nil {
+		return nil, fmt.Errorf("flush err: %w", err)
+	}
+
 	return out.Bytes(), nil
 }
 

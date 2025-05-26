@@ -33,11 +33,13 @@ type Config struct {
 
 const fileRegex = `(?i)^.+\.(json|toml|yaml|yml|hcl)$`
 
-const JSON = "json"
-const TOML = "toml"
-const YAML = "yaml"
-const YML = "yml"
-const HCL = "hcl"
+const (
+	JSON = "json"
+	TOML = "toml"
+	YAML = "yaml"
+	YML  = "yml"
+	HCL  = "hcl"
+)
 
 var validExtensions = []string{JSON, TOML, YAML, YML, HCL}
 
