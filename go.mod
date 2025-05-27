@@ -3,7 +3,7 @@ module github.com/conways-glider/ct
 go 1.24
 
 require (
-	github.com/BurntSushi/toml v1.4.0
+	github.com/BurntSushi/toml v1.5.0
 	github.com/hashicorp/hcl v1.0.0
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.8.4
