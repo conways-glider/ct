@@ -13,6 +13,7 @@ import (
 	"strings"
 )
 
+// Config holds all configuration for the application
 type Config struct {
 	// CLI flags
 	Input            string
@@ -39,6 +40,11 @@ const (
 	YAML = "yaml"
 	YML  = "yml"
 	HCL  = "hcl"
+)
+
+const (
+	// DefaultFilePermission is the default file permission for output files (octal 644)
+	DefaultFilePermission = 644
 )
 
 var validExtensions = []string{JSON, TOML, YAML, YML, HCL}

@@ -44,7 +44,7 @@ func init() {
 	rootCmd.Flags().BoolVarP(&rootConfig.Force, "force", "f", false, "Force overwrite of output file")
 	rootCmd.Flags().BoolVar(&rootConfig.Indent, "indent", false, "Indent output (JSON & TOML only)")
 	rootCmd.Flags().BoolVarP(&rootConfig.EscapeHTML, "escape-html", "e", false, "Escapes HTML (JSON only)")
-	rootCmd.Flags().Uint32VarP(&rootConfig.OutputPermission, "output-permissions", "p", 644, "File permissions for output file")
+	rootCmd.Flags().Uint32VarP(&rootConfig.OutputPermission, "output-permissions", "p", config.DefaultFilePermission, "File permissions for output file")
 	err := rootCmd.MarkFlagRequired("input")
 	if err != nil {
 		panic(err)

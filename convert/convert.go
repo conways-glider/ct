@@ -1,3 +1,4 @@
+// Package convert provides functionality to transform data between different configuration formats.
 package convert
 
 import (
@@ -8,6 +9,9 @@ import (
 	"github.com/conways-glider/ct/yaml"
 )
 
+// Convert transforms data from one format to another based on the provided configuration.
+// It first decodes the input data according to the input extension, then encodes it
+// according to the output extension.
 func Convert(rootConfig *config.Config) ([]byte, error) {
 	var decoded interface{}
 	var err error
