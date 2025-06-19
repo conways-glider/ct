@@ -45,14 +45,14 @@ ct is a lightweight, fast, and simple config file transformer. Currently, it sup
 You can install directly with:
 
 ```bash
-brew install conways-glider/tap/ct
+brew install --cask conways-glider/tap/ct
 ```
 
 Or, you can tap and install with:
 
 ```bash
 brew tap conways-glider/tap
-brew install ct
+brew install --cask ct
 ```
 
 ### Manual
