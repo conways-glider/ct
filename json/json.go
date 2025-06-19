@@ -1,3 +1,4 @@
+// Package json provides encoding and decoding functionality for JSON format.
 package json
 
 import (
@@ -8,6 +9,7 @@ import (
 	"github.com/conways-glider/ct/config"
 )
 
+// Encode converts the input data to JSON format with optional formatting options.
 func Encode(config *config.Config, in interface{}) ([]byte, error) {
 	buf := new(bytes.Buffer)
 	encoder := json.NewEncoder(buf)
@@ -23,6 +25,7 @@ func Encode(config *config.Config, in interface{}) ([]byte, error) {
 	return buf.Bytes(), err
 }
 
+// Decode reads JSON data from the configured input reader and returns the parsed data.
 func Decode(config *config.Config) (interface{}, error) {
 	var out interface{}
 	err := json.NewDecoder(config.InputReader).Decode(&out)

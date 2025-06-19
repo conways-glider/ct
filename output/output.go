@@ -8,6 +8,8 @@ import (
 	"github.com/conways-glider/ct/config"
 )
 
+// Output writes the converted data either to a file or to stdout
+// based on the configuration settings.
 func Output(rootConfig *config.Config, output []byte) error {
 	if rootConfig.OutputIsFile {
 		filemode := fs.FileMode(rootConfig.ParsedOutputPermission)
