@@ -9,6 +9,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const (
+	jsonFile       = "../test_resources/files/json.json"
+	jsonIndentFile = "../test_resources/files/json_indent.json"
+)
+
 func getTestConfig(inputFile string, output string, indent bool) *config.Config {
 	config := config.Config{
 		Input:  inputFile,
@@ -37,7 +42,7 @@ func TestConvert(t *testing.T) {
 			args: args{
 				rootConfig: getTestConfig("../test_resources/files/toml.toml", "json", false),
 			},
-			wantFile: "../test_resources/files/json.json",
+			wantFile: jsonFile,
 			wantErr:  false,
 		},
 		{
@@ -45,7 +50,7 @@ func TestConvert(t *testing.T) {
 			args: args{
 				rootConfig: getTestConfig("../test_resources/files/toml.toml", "json", true),
 			},
-			wantFile: "../test_resources/files/json_indent.json",
+			wantFile: jsonIndentFile,
 			wantErr:  false,
 		},
 		{
@@ -53,7 +58,7 @@ func TestConvert(t *testing.T) {
 			args: args{
 				rootConfig: getTestConfig("../test_resources/files/yaml.yaml", "json", false),
 			},
-			wantFile: "../test_resources/files/json.json",
+			wantFile: jsonFile,
 			wantErr:  false,
 		},
 		{
@@ -61,7 +66,7 @@ func TestConvert(t *testing.T) {
 			args: args{
 				rootConfig: getTestConfig("../test_resources/files/yaml.yaml", "json", true),
 			},
-			wantFile: "../test_resources/files/json_indent.json",
+			wantFile: jsonIndentFile,
 			wantErr:  false,
 		},
 		{
@@ -69,7 +74,7 @@ func TestConvert(t *testing.T) {
 			args: args{
 				rootConfig: getTestConfig("../test_resources/files/yml.yml", "json", false),
 			},
-			wantFile: "../test_resources/files/json.json",
+			wantFile: jsonFile,
 			wantErr:  false,
 		},
 		{
@@ -77,7 +82,7 @@ func TestConvert(t *testing.T) {
 			args: args{
 				rootConfig: getTestConfig("../test_resources/files/yml.yml", "json", true),
 			},
-			wantFile: "../test_resources/files/json_indent.json",
+			wantFile: jsonIndentFile,
 			wantErr:  false,
 		},
 		{

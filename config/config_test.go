@@ -15,8 +15,8 @@ func TestConfig_Validate(t *testing.T) {
 		{
 			name: "valid json to yaml",
 			config: Config{
-				Input:  "json",
-				Output: "yaml",
+				Input:  JSON,
+				Output: YAML,
 			},
 			wantErr: false,
 		},
@@ -24,14 +24,14 @@ func TestConfig_Validate(t *testing.T) {
 			name: "invalid input extension",
 			config: Config{
 				Input:  "invalid",
-				Output: "yaml",
+				Output: YAML,
 			},
 			wantErr: true,
 		},
 		{
 			name: "invalid output extension",
 			config: Config{
-				Input:  "json",
+				Input:  JSON,
 				Output: "invalid",
 			},
 			wantErr: true,
@@ -39,8 +39,8 @@ func TestConfig_Validate(t *testing.T) {
 		{
 			name: "yml extension normalization",
 			config: Config{
-				Input:  "yml",
-				Output: "yaml",
+				Input:  YML,
+				Output: YAML,
 			},
 			wantErr: false,
 		},
@@ -61,7 +61,7 @@ func TestConfig_Validate(t *testing.T) {
 			}
 
 			// Check yml normalization
-			if !tt.wantErr && config.Input == "yml" {
+			if !tt.wantErr && config.Input == YML {
 				assert.Equal("yaml", config.InputExtension, "Expected input extension to be normalized to 'yaml'")
 			}
 		})
@@ -73,11 +73,11 @@ func TestGetExtension(t *testing.T) {
 		fileName string
 		want     string
 	}{
-		{"config.json", "json"},
-		{"data.YAML", "yaml"},
-		{"file.toml", "toml"},
-		{"test.HCL", "hcl"},
-		{"nested/path/file.yml", "yml"},
+		{"config.json", JSON},
+		{"data.YAML", YAML},
+		{"file.toml", TOML},
+		{"test.HCL", HCL},
+		{"nested/path/file.yml", YML},
 	}
 
 	for _, tt := range tests {
